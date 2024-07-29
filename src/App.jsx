@@ -1,64 +1,50 @@
-import { Button } from "@/components/ui/button"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { ModeToggle } from './components/mode-toggle'
-import GridPattern from "./components/magicui/animated-grid-pattern"
- 
-const App = () => {
-  return (
-    <div> 
-      <GridPattern/>
-   <ModeToggle/>  
+import { BrowserRouter,Routes,Route } from 'react-router-dom'
+import AdminLayout from './layout/Adminlayout'
+import HomeLayout from './layout/HomeLayout'
+import AdminDashboard from './pages/Admin/AdminDashboard'
 
-       <Dialog>
-    <DialogTrigger asChild>
-      <Button variant="outline">Edit Profile</Button>
-    </DialogTrigger>
-    <DialogContent className="sm:max-w-[425px]">
-      <DialogHeader>
-        <DialogTitle>Login</DialogTitle>
-        <DialogDescription>
-          Make changes to your profile here. Click save when you're done.
-        </DialogDescription>
-      </DialogHeader>
-      <div className="grid gap-4 py-4">
-        <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="name" className="text-right">
-            Username
-          </Label>
-          <Input
-            id="name"
-            defaultValue="Enter Username"
-            className="col-span-3"
-          />
-        </div>
-        <div className="grid grid-cols-4 items-center gap-4">
-          <Label htmlFor="username" className="text-right">
-            Password
-          </Label>
-          <Input
-            id="username"
-            defaultValue="Enter password"
-            className="col-span-3"
-          />
-        </div>
-      </div>
-      <DialogFooter>
-        <Button type="submit">Login</Button>
-      </DialogFooter>
-    </DialogContent>
-  </Dialog>
-</div>
-  )
+// import Home from './pages/Shared/Home'
+
+import Login from './pages/Shared/Login'
+import NotFound from './pages/Shared/Notfound'
+import Register from './pages/Shared/Register'
+import AdminUsers from './pages/Admin/AdminUsers'
+import Event from './pages/Shared/Event'
+import BookingForm from './pages/Shared/BookingForm'
+import Home from './pages/Shared/Home'
+
+const App = () => {
+    return (
+        <>
+        <BrowserRouter>
+        <Routes>
+            <Route element={<HomeLayout />}>
+                {/* <Route path='/' element={<Home />} /> */}
+                
+                <Route path='/' element={<Home/>} /> 
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/event' element={<Event/>} /> 
+                <Route path='/BookingForm' element={<BookingForm/>} /> 
+                <Route path='/Home' element={<Home/>} /> 
+                
+
+            </Route>
+
+           
+
+            <Route element={<AdminLayout />}>
+                <Route path='/admin/dashboard' element={<AdminDashboard />} />
+                <Route path='/admin/users' element={<AdminUsers />} />
+            </Route>
+
+            <Route path='*' element={<NotFound />} />
+        </Routes>
+    </BrowserRouter>
+
+
+</>
+    )
 }
 
 export default App

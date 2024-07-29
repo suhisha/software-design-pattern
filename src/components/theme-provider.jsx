@@ -9,8 +9,11 @@ const initialState = {
 const ThemeProviderContext = createContext(initialState)
 
 export function ThemeProvider({
+    // eslint-disable-next-line react/prop-types
     children,
+    // eslint-disable-next-line react/prop-types
     defaultTheme = "system",
+    // eslint-disable-next-line react/prop-types
     storageKey = "vite-ui-theme",
     ...props
 }) {
