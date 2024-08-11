@@ -1,0 +1,25 @@
+.EventCard {
+    text-align: center;
+  }
+  
+  .event-form {
+    margin: 20px;
+  }
+  
+  .event-form input {
+    margin: 5px;
+  }
+  
+  .event-list {
+    margin: 20px;
+  }
+  
+  .event-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .event-list li {
+    margin: 10px 0;
+  }
+  
